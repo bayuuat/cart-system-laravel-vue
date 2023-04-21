@@ -1,0 +1,12 @@
+.form input{
+  border: 1px solid #CCC;
+  padding: 10px;
+}
+
+.form button{
+  padding: 10px;
+  background-color: darksalmon;
+  border: 1px solid darksalmon;
+  color: white;
+  cursor: pointer;
+}
