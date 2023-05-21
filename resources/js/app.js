@@ -6,6 +6,9 @@
 
 import "./bootstrap";
 import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
+import routes from './router'
+import store from './store'
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -14,11 +17,14 @@ import { createApp } from "vue";
  */
 
 const app = createApp({});
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
 
-import CartComponent from "./components/CartComponent.vue";
-app.component("cart", CartComponent);
-import TableComponent from "./components/LikaTable.vue";
-app.component("table-lika", TableComponent);
+import Layout from "./components/Layout.vue";
+app.component("layout", Layout);
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -38,4 +44,5 @@ app.component("table-lika", TableComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount("#app");
+app.use(router)
+app.use(store).mount("#app");

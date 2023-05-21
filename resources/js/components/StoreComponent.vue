@@ -1,17 +1,18 @@
 <template>
     <div class="container">
-        <h2 class="mt-5">Keranjang Belanja</h2>
+        <h2 class="mt-5">List Produk</h2>
         <lika-table
-            :listData="cartList"
-            :listColumn="kolomKeranjang"
-            @emit-click="deleteList"
+            :listData="list"
+            :listColumn="kolomProduk"
+            :tipe="'product'"
+            @emit-click="addList"
         ></lika-table>
     </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 import LikaTable from "./LikaTable.vue";
+import { mapGetters } from "vuex";
 export default {
     components: { LikaTable },
     data: function () {
@@ -22,12 +23,12 @@ export default {
     },
     computed: {
         ...mapGetters({
-            cartList: "getCartList",
+            list: "getList",
         }),
     },
     methods: {
-        deleteList(item) {
-            this.$store.dispatch("deleteFromCart", item);
+        addList(item) {
+            this.$store.dispatch("addToCart", item);
         },
     },
 };
